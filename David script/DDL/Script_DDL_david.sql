@@ -176,88 +176,6 @@ WHERE a.id_prod = b.id_prod
 GROUP BY 1,2,3
 ORDER BY 1;
 
-CREATE OR REPLACE FUNCTION fun_act_tabla() RETURNS "trigger" AS
-$$
-    DECLARE wid_consec tab_borrados.id_consec%TYPE;
-    BEGIN
-        IF TG_OP = 'INSERT' THEN
-           NEW.usr_insert = CURRENT_USER;
-           NEW.fec_insert = CURRENT_TIMESTAMP;
-           RETURN NEW;
-        END IF;
-        IF TG_OP = 'UPDATE' THEN
-           NEW.usr_update = CURRENT_USER;
-           NEW.fec_update = CURRENT_TIMESTAMP;
-           RETURN NEW;
-        END IF;
-        IF TG_OP = 'DELETE' THEN
-            SELECT MAX(a.id_consec) INTO wid_consec FROM tab_borrados a;
-            IF wid_consec IS NULL THEN
-                wid_consec = 1;
-            ELSE
-                wid_consec = wid_consec + 1;
-            END IF;
-            INSERT INTO tab_borrados VALUES(wid_consec,TG_RELNAME,CURRENT_USER,CURRENT_TIMESTAMP);
-            RETURN OLD; 
-        END IF;
-    END;
-$$
-LANGUAGE PLPGSQL;
-
-CREATE OR REPLACE FUNCTION fun_del_tablasKARDEX() RETURNS "trigger" AS
-$$
-    DECLARE producto RECORD;
-    sumastock INTEGER;
-    restastock INTEGER;
-    consecutivo INTEGER;
-    total_valor BIGINT;
-    suma_de_todos_cosprom BIGINT;
-    promedio_total FLOAT;
-    wid_consec tab_borrados.id_consec%TYPE;
-    BEGIN
-        IF TG_OP = 'INSERT' THEN
-           NEW.usr_insert = CURRENT_USER;
-           NEW.fec_insert = CURRENT_TIMESTAMP;
-           RAISE NOTICE '%', NEW.id_prod;  
-           
-            SELECT tab_prod.val_cosprom, tab_prod.val_stock, tab_prod.val_stockmin, tab_prod.val_stockmax INTO producto FROM tab_prod
-            WHERE tab_prod.id_prod = NEW.id_prod AND tab_prod.ind_estado = TRUE;
-
-            restastock = producto.val_stock - NEW.cant_prod;
-            sumastock = NEW.cant_prod + producto.val_stock;
-
-             SELECT SUM (val_prod) INTO suma_de_todos_cosprom FROM tab_kardex WHERE ind_tipomov='E' and val_consec=NEW.val_consec ;
-             promedio_total = suma_de_todos_cosprom/sumastock; 
-
-            IF NEW.ind_tipomov='E' THEN 
-                UPDATE tab_prod SET val_cosprom = promedio_total, val_stock = sumastock
-                WHERE id_prod = NEW.id_prod;
-            END IF;
-            IF  NEW.ind_tipomov='S' THEN
-                UPDATE tab_prod SET val_cosprom = promedio_total
-                WHERE id_prod = NEW.id_prod;
-            END IF;
-           RETURN NEW;
-        END IF;
-        IF TG_OP = 'UPDATE' THEN
-           NEW.usr_update = CURRENT_USER;
-           NEW.fec_update = CURRENT_TIMESTAMP;
-           RETURN NEW;
-        END IF;
-        IF TG_OP = 'DELETE' THEN
-            SELECT MAX(a.id_consec) INTO wid_consec FROM tab_borrados a;
-            IF wid_consec IS NULL THEN
-                wid_consec = 1;
-            ELSE
-                wid_consec = wid_consec + 1;
-            END IF;
-            INSERT INTO tab_borrados VALUES(wid_consec,TG_RELNAME,CURRENT_USER,CURRENT_TIMESTAMP);
-            RETURN OLD; 
-        END IF;
-    END;
-$$
-LANGUAGE PLPGSQL;
-
 CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_ciudades
 FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
 
@@ -294,37 +212,9 @@ FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
 CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_bodegas
 FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
 
-/* trigger para KARDEX*/ 
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_kardex
-FOR EACH ROW EXECUTE PROCEDURE fun_del_tablasKARDEX();
 
-CREATE OR REPLACE  TRIGGER tri_INSERTKARDEX_tabla AFTER INSERT  ON tab_kardex
-FOR EACH ROW EXECUTE PROCEDURE fun_del_tablasKARDEX();
 
-CREATE OR REPLACE  TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_kardex
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-/* -- trigger para actualizar stock 
-1.	Actualizar la cantidad de producto que exista en tab_prod, en caso de que el valor sea 0 o negativo. 
 
 Para ello, ale Analista ADSO se basará en los valores de stock mínimo y máximo. 
 La meta es que Ningún producto quede con val_stock negativo o val_cosprom negativo.
 */
-
-CREATE OR REPLACE FUNCTION actualizar_stock() RETURNS "trigger" AS
-$$
-    DECLARE
-    BEGIN
-        IF NEW.val_stock <= 0 OR NEW.val_cosprom <=0
-            THEN NEW.val_stock GREATEST(NEW.val_stock, NEW.val_cosprom)
-        	    
-        END IF;
-        RETURN NEW;
-    END
-$$
-LANGUAGE PLPGSQL;
-
-CREATE TRIGGER trigger_actualizar_stock BEFORE INSERT OR UPDATE ON tab_prod
-FOR EACH ROW EXECUTE FUNCTION actualizar_stock();
-
-/* --
