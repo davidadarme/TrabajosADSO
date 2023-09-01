@@ -175,39 +175,3 @@ CREATE OR REPLACE VIEW view_kardex AS SELECT a.id_prod,a.ind_tipomov,b.nom_prod,
 WHERE a.id_prod = b.id_prod
 GROUP BY 1,2,3
 ORDER BY 1;
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_ciudades
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_ciudades
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_marcas
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_marcas
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_prod
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_prod
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_prov
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_prov
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_sucur
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_sucur
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE OR REPLACE TRIGGER tri_del_tabla AFTER DELETE ON tab_bodegas
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_bodegas
-FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
