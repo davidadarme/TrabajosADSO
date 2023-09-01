@@ -30,8 +30,8 @@ CREATE TABLE tab_ciudades
 (
     id_ciudad       INTEGER     NOT NULL,
     nom_ciudad      VARCHAR     NOT NULL,
-    usr_insert      VARCHAR     NOT NULL,
-    fec_insert      TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    usr_insert      VARCHAR,
+    fec_insert      TIMESTAMP WITHOUT TIME ZONE,
     usr_update      VARCHAR,
     fec_update      TIMESTAMP WITHOUT TIME ZONE,
     PRIMARY KEY(id_ciudad)
@@ -54,8 +54,8 @@ CREATE TABLE tab_bodegas
     nom_bodega      VARCHAR     NOT NULL,
     tel_bodega      BIGINT      NOT NULL,
     ind_estado      BOOLEAN     NOT NULL    DEFAULT TRUE, -- TRUE=Activa / FALSE= Inactiva
-    usr_insert      VARCHAR     NOT NULL,
-    fec_insert      TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    usr_insert      VARCHAR,
+    fec_insert      TIMESTAMP WITHOUT TIME ZONE,
     usr_update      VARCHAR,
     fec_update      TIMESTAMP WITHOUT TIME ZONE,    
     PRIMARY KEY(id_bodega)
@@ -103,20 +103,20 @@ CREATE TABLE tab_prov
 
 CREATE TABLE tab_prod
 (
-    id_prod         INTEGER     NOT NULL,
-    nom_prod        VARCHAR     NOT NULL,  
-    ref_prod        VARCHAR     NOT NULL,
-    val_cosprom     INTEGER     NOT NULL    CHECK(val_cosprom >=0),
-    val_stock       INTEGER     NOT NULL,
-    val_stockmin    INTEGER     NOT NULL,
-    val_stockmax    INTEGER     NOT NULL,
-    val_reorden     INTEGER     NOT NULL,
-    id_marca        INTEGER     NOT NULL,
-    fec_compra      DATE        NOT NULL,
-    fec_vence       DATE        NOT NULL,
-    ind_estado      BOOLEAN     NOT NULL    DEFAULT TRUE, --TRUE=Activo / FALSE=Inactivo
-    usr_insert      VARCHAR     NOT NULL,
-    fec_insert      TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    id_prod         INTEGER,
+    nom_prod        VARCHAR,  
+    ref_prod        VARCHAR,
+    val_cosprom     INTEGER     CHECK(val_cosprom >=0),
+    val_stock       INTEGER,
+    val_stockmin    INTEGER,
+    val_stockmax    INTEGER,
+    val_reorden     INTEGER,
+    id_marca        INTEGER,
+    fec_compra      DATE   ,
+    fec_vence       DATE   ,
+    ind_estado      BOOLEAN    DEFAULT TRUE, --TRUE=Activo / FALSE=Inactivo
+    usr_insert      VARCHAR,
+    fec_insert      TIMESTAMP WITHOUT TIME ZONE,
     usr_update      VARCHAR,
     fec_update      TIMESTAMP WITHOUT TIME ZONE,
     PRIMARY KEY(id_prod),
@@ -146,8 +146,8 @@ CREATE TABLE tab_kardex
     cant_prod       INTEGER     NOT NULL, 
     val_total       BIGINT      NOT NULL,
     val_observa     TEXT,
-    usr_insert      VARCHAR     NOT NULL, /*PENDIENTE POR REVISION POR SI ES NECESARIO EL REGISTRO DEL UPDATE*/
-    fec_insert      TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    usr_insert      VARCHAR, /*PENDIENTE POR REVISION POR SI ES NECESARIO EL REGISTRO DEL UPDATE*/
+    fec_insert      TIMESTAMP WITHOUT TIME ZONE,
     usr_update      VARCHAR,
     fec_update      TIMESTAMP WITHOUT TIME ZONE,
     PRIMARY KEY(val_consec),
