@@ -211,10 +211,3 @@ FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
 
 CREATE TRIGGER tri_act_tabla BEFORE INSERT OR UPDATE ON tab_bodegas
 FOR EACH ROW EXECUTE PROCEDURE fun_act_tabla();
-
-
-
-
-Para ello, ale Analista ADSO se basará en los valores de stock mínimo y máximo. 
-La meta es que Ningún producto quede con val_stock negativo o val_cosprom negativo.
-*/
