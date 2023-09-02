@@ -7,7 +7,6 @@ ADSO - SENA
 */
 
 -- SELECT fun_kardex('S', 5, 500000, 10, 'text');
---  wind_tipomov character varying, wid_prod integer, wval_prod integer, wcant_prod integer, wval_observa text 
 
 CREATE OR REPLACE FUNCTION fun_kardex(wind_tipomov tab_kardex.ind_tipomov%TYPE, wid_prod tab_prod.id_prod%TYPE, wval_prod tab_kardex.val_prod%TYPE, wcant_prod tab_kardex.cant_prod%TYPE, wval_observa tab_kardex.val_observa%TYPE) RETURNS VARCHAR AS
 
@@ -71,20 +70,18 @@ BEGIN
             WHEN wind_tipomov = 'S' THEN
                 resta_stock = wreg_prod.val_stock - wcant_prod;
 
-                IF wreg_prod.val_stock > wreg_prod.val_stockmin AND wreg_prod.val_stockmax THEN -- Hay salida de producto(s)
-                    RETURN 'Felicidades';
-                ELSIF wreg_prod.val_stock = 0 OR wcant_prod < wreg_prod.val_stockmin THEN -- Validación de stock
-                    RETURN 'Error';
-                ELSE -- Fin
-                    UPDATE tab_prod SET val_cosprom = prom_total, val_stock = resta_stock WHERE id_prod = wid_prod;
-                    RETURN 'Se actualizó el producto';
-                END IF;
+				IF wreg_prod.val_stock > wreg_prod.val_stockmin AND wreg_prod.val_stock < wreg_prod.val_stockmax THEN
+                RETURN 'Felicidades';
+            ELSIF wreg_prod.val_stock = 0 OR wcant_prod < wreg_prod.val_stockmin THEN
+                RETURN 'Error';
+            ELSE
+                UPDATE tab_prod SET val_cosprom = prom_total, val_stock = resta_stock WHERE id_prod = wid_prod;
+                RETURN 'Se actualizó el producto';
+            END IF;
         END CASE;
     ELSE
         RETURN 'No se encontró el producto';
     END IF;
-
-    -- Cerrar el cursor
     CLOSE cur;
 END;
 $$
