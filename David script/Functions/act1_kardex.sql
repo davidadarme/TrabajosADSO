@@ -12,6 +12,8 @@
 --SELECT * FROM tab_kardex;
 --SELECT prueba();
 
+-- CALL act_kardex();
+-- CALL actualizar_precio_promedio();
 
 CREATE OR REPLACE FUNCTION act_kardex() RETURNS BOOLEAN AS
 $$

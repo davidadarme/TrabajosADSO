@@ -1,10 +1,7 @@
 SERVICIO NACIONAL DE APRENDIZAJE
 
-1.	Actualizar la cantidad de producto que exista en tab_prod, en caso de que el valor sea 0 o negativo. Para ello, ale Analista ADSO se basará en los valores de stock mínimo y máximo. La meta es que Ningún producto quede con existencia negativa o valor de venta (cosprom) negativo.
-
-
-
-2.	Actualizar el precio promedio del producto, teniendo en cuenta:
+1. Actualizar la cantidad de producto que exista en tab_prod, en caso de que el valor sea 0 o negativo. Para ello, ale Analista ADSO se basará en los valores de stock mínimo y máximo. La meta es que Ningún producto quede con existencia negativa o valor de venta (cosprom) negativo.
+2. Actualizar el precio promedio del producto, teniendo en cuenta:
 
 a.	La cantidad de producto existente en el Kardex
 
