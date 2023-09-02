@@ -7,4 +7,7 @@
 5. 
 
 > Puedes abrir la base de datos con un backup.
-1. Debes crear una base de datos con el nombre "dadarme" 
+1. Debes crear una base de datos con el nombre dadarme 
+2. Seleccionar la base de datos y seleccionar "restore"
+3. No tocar nada más
+4. Listo
