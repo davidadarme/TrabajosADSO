@@ -4,7 +4,7 @@
 2. Ejecutar las funciones [Funciones](Functions)y [Triggers](Triggers) en su respectivo orden
 3. Ejecutar el [Index](Consultas/index.sql) de [Consultas](Consultas)
 4. Ejecutar el [Insert del kardex](DML/ins_kardex.sql)
-5. 
+5. Listo
 
 > Puedes abrir la base de datos con un backup.
 1. Debes crear una base de datos con el nombre dadarme 
