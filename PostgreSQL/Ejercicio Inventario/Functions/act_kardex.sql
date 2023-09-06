@@ -1,10 +1,10 @@
-SELECT a.cant_prod FROM tab_kardex a
-WHERE a.id_prod = 1;
-SELECT SUM(a.cant_prod) FROM tab_kardex a
-WHERE a.id_prod = 1 AND a.ind_tipomov = 'S';
+--SELECT a.cant_prod FROM tab_kardex a
+--WHERE a.id_prod = 1;
+--SELECT SUM(a.cant_prod) FROM tab_kardex a
+-- WHERE a.id_prod = 1 AND a.ind_tipomov = 'S';
 --SELECT * FROM tab_prod;
 --SELECT prueba();
-SELECT * FROM tab_kardex;
+-- SELECT * FROM tab_kardex;
 
 CREATE OR REPLACE FUNCTION prueba() RETURNS BOOLEAN AS
 $$
