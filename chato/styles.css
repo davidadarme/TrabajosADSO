@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, article, aside, footer {
+    float: left;
+    width: 100%;
+    padding: 20px;
+}
+
+header, nav, footer {
+    background-color: aquamarine;
+    border: 1px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+article {
+    background-color: aquamarine;
+    width: 70%;
+}
+
+aside {
+    float: right;
+    height: 10%;
+    width: 30%;
+    background-color: aquamarine;
+    padding: 30px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    position: relative;
+    background-color: aquamarine;
+    border: 1px solid #ccc;
+    text-align: center;
+}

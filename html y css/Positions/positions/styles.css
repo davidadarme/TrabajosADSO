@@ -1,0 +1,20 @@
+.container {
+    text-align: center;
+}
+
+.absolute {
+    display: inline-block;
+    width: 300px; 
+
+}
+
+.relative {
+    float: right;
+    width: 300px;
+
+}
+
+.static {
+    float: left;
+    width: 300px;
+}
