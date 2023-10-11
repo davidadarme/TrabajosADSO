@@ -1,0 +1,41 @@
+body {
+    /*display: flex;*/
+    justify-items: center;
+    text-align: center;
+    margin-right: rem;
+
+}
+
+header, nav, article, aside, section, footer {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    margin-top: 2rem;
+    border: 2px solid #000000;
+    border-radius: 1rem;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+article {
+    justify-items: center;
+    display: flex;
+    width: 65%;
+    height: 10rem;
+}
+
+section {
+    margin: 1rem;
+    background-color: #0f7c7c;
+}
+
+aside {
+    float: right;
+    width: 30%;
+    height: 10rem;
+    text-align: center;
+}
+
+footer {
+    position: relative;
+}
