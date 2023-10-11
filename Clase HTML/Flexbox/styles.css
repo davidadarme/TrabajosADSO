@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header, nav, article, aside, section, footer {
+    float: left;
+    width: 100%;
+    padding: 20px;
+margin-top: 2.5rem;
+border: 1px solid #ccc;
+border-radius: 1rem;
+}
+
+header, nav, footer {
+    background-color: aquamarine;
+    border: 1px;
+    border: 1px solid #ccc;
+    text-align: center;
+margin-top: 2.5rem;
+}
+
+article {
+    background-color: aquamarine;
+    width: 65%;
+height: 10rem;
+}
+
+aside {
+    float: right;
+    width: 30%;
+    height: 10rem;
+    background-color: aquamarine;
+    border: 1px solid #ccc;
+text-align: center;
+
+}
+
+section {
+margin: 1rem;
+width: 30%;
+background-color: #0f7c7c;
+}
+
+footer {
+    position: relative;
+    background-color: aquamarine;
+    text-align: center;
+}
