@@ -1,20 +1,26 @@
 .container {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
 }
 
 .absolute {
-    display: inline-block;
-    width: 300px; 
-
+    height: 25rem;
+    margin-right: 1rem; /* Margen entre elementos */
 }
 
 .relative {
-    float: right;
-    width: 300px;
-
+    height: 25rem;
+    margin-right: 1rem; /* Margen entre elementos */
 }
 
 .static {
-    float: left;
-    width: 300px;
+    height: 25rem;
 }
+
+/*@media screen {767px
+    object-fit: cover;
+    object-position: bottom;
+}*/
