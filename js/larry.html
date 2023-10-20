@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js</title>
+</head>
+<body>
+    <script>
+        // Crear un objeto punto con propiedades x e y
+        var pt = { x: 3, y: 5 };
+
+        // Definir una función para la traducción del punto
+        function translation(point, dx, dy) {
+            point.x += dx;
+            point.y += dy;
+        }
+
+        // Llamar a la función de traducción
+        translation(pt, 7, 5);
+
+        // Escribir el resultado en el documento HTML
+        document.write("<p>");
+        document.write("Translating (3,5) by (7,5) yields (" + pt.x + "," + pt.y + ").");
+    </script>
+</body>
+</html>
