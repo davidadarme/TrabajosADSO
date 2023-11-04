@@ -1,0 +1,37 @@
+Experimento Cientifico
+
+Materiales:
+Carrito de juguete 0.087 kg.
+Lámina de cartón 0.55 m.
+base soporte  para la altura 0.19 m.
+Cinta métrica.
+Cronómetro.
+papel y lapiz.
+
+Organiza el área de experimentación en una superficie plana y nivelada.
+
+Coloca la base soporte sobre la superficie plana y sobre la base soporte ubica la lámina de cartón, generando una un rampa.
+
+Mide la longitud de la rampa y registra esta medida en metros(m).
+
+Coloca el carrito en la parte superior de la rampa y asegúrate de que esté en reposo.
+
+Mide la altura desde la base de la rampa hasta la posición inicial del carrito y registra esta altura como la energía potencial inicial en metros.
+
+Libera el carrito para que se desplace hacia abajo de la rampa.
+
+Inicia el cronómetro al mismo tiempo que liberas el carrito.
+
+Detén el cronómetro cuando el carrito alcance el final.
+
+Registra el tiempo transcurrido en segundos y la distancia recorrida por el carrito en metros.
+
+¿se realizó el experimento siguiendo los pasos indicados?
+
+si: Analisis de Datos:
+cálcula la velocidad.
+cálcula la energía Cinética.
+Cálcula la energía potencial.
+Cálcula la fuerza. Utilizando la segunda ley de newton.
+
+no:Vuelve a realizar el Proceso.
